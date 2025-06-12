@@ -1,6 +1,6 @@
 # 🎬 Sistema de Recomendação de Filmes Híbrido
 
-![Prévia da Aplicação](Captura de Tela (168).png)
+![Prévia da Aplicação](img/Captura de Tela (168).png)
 
 Um sistema de recomendação de filmes completo e interativo, desenvolvido em Python, que utiliza uma abordagem híbrida para fornecer sugestões personalizadas. A aplicação foi construída com Streamlit e integra dois modelos distintos de Machine Learning.
 
