@@ -3,7 +3,13 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from surprise import Reader, Dataset, SVD
+import os
+from dotenv import load_dotenv
 
+load_dotenv() # Carrega as variáveis do arquivo .env
+
+# O app agora sabe como encontrar a chave, se precisar dela.
+API_KEY = os.getenv('TMDB_API_KEY')
 # --- CONFIGURAÇÃO DA PÁGINA (Deve ser o primeiro comando Streamlit) ---
 st.set_page_config(layout="wide", page_title="Sistema de Recomendação Híbrido")
 

@@ -1,9 +1,14 @@
 import requests
 import pandas as pd
 import time
+import os
+from dotenv import load_dotenv
 
+load_dotenv() # Carrega as variáveis do arquivo .env
+
+API_KEY = os.getenv('TMDB_API_KEY')
 # --------------- CONFIGURAÇÃO ---------------
-API_KEY = '54ef234da6f9f785518fa955639f7b38' # Substitua pela sua chave da API do TMDB
+ # Substitua pela sua chave da API do TMDB
 BASE_URL = 'https://api.themoviedb.org/3'
 LANGUAGE = 'pt-BR'
 # --------------- FIM DA CONFIGURAÇÃO ---------------
