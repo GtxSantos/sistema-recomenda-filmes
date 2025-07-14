@@ -73,24 +73,33 @@ else:
         movie_list = content_df['title'].tolist()
         selected_movie = st.selectbox("Escolha um filme:", movie_list, key="content_select")
         
-        if st.button("Recomendar Similares", key="content_button"):
-            if selected_movie:
-                idx = content_indices[selected_movie].iloc[0]
-                sim_scores = list(enumerate(content_cosine_sim[idx]))
-                sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-                sim_scores = sim_scores[1:6]
-                movie_indices = [i[0] for i in sim_scores]
-                recommendations = content_df.iloc[movie_indices]
+    if st.button("Recomendar Similares", key="content_button"):
+        if selected_movie:
+            # Pega o índice ou a série de índices
+            idx_lookup = content_indices[selected_movie]
 
-                st.subheader(f"Recomendações parecidas com '{selected_movie}':")
-                POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
-                cols = st.columns(5)
-                for i, row in enumerate(recommendations.itertuples()):
-                    with cols[i]:
-                        poster_path = row.poster_path
-                        if pd.notna(poster_path):
-                            st.image(POSTER_BASE_URL + poster_path, use_container_width=True)
-                        st.caption(f"**{row.title}**")
+            # Verifica se o resultado é uma série (múltiplos filmes) ou um único número
+            if isinstance(idx_lookup, pd.Series):
+                # Se for uma série, pega o primeiro índice
+                idx = idx_lookup.iloc[0]
+            else:
+                # Se for um único número, apenas o utiliza
+                idx = idx_lookup
+
+            sim_scores = list(enumerate(content_cosine_sim[idx]))
+            sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+            sim_scores = sim_scores[1:6]
+            movie_indices = [i[0] for i in sim_scores]
+            recommendations = content_df.iloc[movie_indices]
+            st.subheader(f"Recomendações parecidas com '{selected_movie}':")
+            POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
+            cols = st.columns(5)
+            for i, row in enumerate(recommendations.itertuples()):
+                with cols[i]:
+                    poster_path = row.poster_path
+                    if pd.notna(poster_path):
+                        st.image(POSTER_BASE_URL + poster_path, use_container_width=True)
+                    st.caption(f"**{row.title}**")
 
     # --- ABA 2: RECOMENDAÇÃO COLABORATIVA ---
     with tab2:
