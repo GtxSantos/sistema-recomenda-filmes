@@ -75,7 +75,7 @@ else:
         
         if st.button("Recomendar Similares", key="content_button"):
             if selected_movie:
-                idx = content_indices[selected_movie]
+                idx = content_indices[selected_movie].iloc[0]
                 sim_scores = list(enumerate(content_cosine_sim[idx]))
                 sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
                 sim_scores = sim_scores[1:6]
