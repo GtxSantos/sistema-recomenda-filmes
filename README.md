@@ -71,4 +71,4 @@ A aplicação será aberta no seu navegador!
 
 * Dados dos filmes fornecidos pela **[API do TMDB](https://www.themoviedb.org/)**.
 * Dataset de avaliações fornecido pelo **[MovieLens](https://grouplens.org/datasets/movielens/)**.
-* Projeto desenvolvido em colaboração guiada com a **IA Gemini do Google**.
+
