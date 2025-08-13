@@ -16,7 +16,7 @@ except FileNotFoundError:
 df_movies['overview'] = df_movies['overview'].fillna('')
 df_movies['genres'] = df_movies['genres'].fillna('')
 
-# --- A GRANDE MELHORIA ESTÁ AQUI! ---
+
 # Vamos criar uma "sopa de conteúdo" combinando gêneros e sinopse.
 # Repetimos os gêneros para dar mais peso a eles na análise de similaridade.
 df_movies['content_soup'] = df_movies['genres'] + ' ' + df_movies['genres'] + ' ' + df_movies['overview']
@@ -50,9 +50,9 @@ def get_recommendations(title, cosine_sim_matrix=cosine_sim, num_recommendations
     return df_movies['title'].iloc[movie_indices].tolist()
 
 
-# --- TESTANDO A NOVA FUNÇÃO ---
+# --- A NOVA FUNÇÃO ---
 if __name__ == "__main__":
-    # Vamos testar com 'Viúva Negra' de novo para ver a diferença!
+    
     filme_exemplo = "Viúva Negra" 
     
     recomendacoes = get_recommendations(filme_exemplo)
