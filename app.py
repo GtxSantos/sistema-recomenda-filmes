@@ -10,7 +10,7 @@ load_dotenv() # Carrega as variáveis do arquivo .env
 
 # O app agora sabe como encontrar a chave, se precisar dela.
 API_KEY = os.getenv('TMDB_API_KEY')
-# --- CONFIGURAÇÃO DA PÁGINA (Deve ser o primeiro comando Streamlit) ---
+# --- CONFIGURAÇÃO DA PÁGINA  ---
 st.set_page_config(layout="wide", page_title="Sistema de Recomendação Híbrido")
 
 # --- MOTOR DE RECOMENDAÇÃO POR CONTEÚDO (Content-Based) ---
