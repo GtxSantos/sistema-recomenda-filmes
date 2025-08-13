@@ -4,11 +4,10 @@ import time
 import os
 from dotenv import load_dotenv
 
-load_dotenv() # Carrega as variáveis do arquivo .env
-
+load_dotenv() 
 API_KEY = os.getenv('TMDB_API_KEY')
 # --------------- CONFIGURAÇÃO ---------------
- # Substitua pela sua chave da API do TMDB
+
 BASE_URL = 'https://api.themoviedb.org/3'
 LANGUAGE = 'pt-BR'
 # --------------- FIM DA CONFIGURAÇÃO ---------------
@@ -122,7 +121,7 @@ if __name__ == "__main__":
     if API_KEY == 'SUA_CHAVE_API_AQUI' or not API_KEY:
         print("ERRO: Por favor, substitua 'SUA_CHAVE_API_AQUI' pela sua chave da API do TMDB no topo do script.")
     else:
-        # Lembre-se de colocar sua chave aqui!
+      
         movies_enriched = fetch_movies_from_tmdb(API_KEY, num_pages_to_fetch=2) # 2 páginas = ~40 filmes
 
         if movies_enriched:
